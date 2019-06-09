@@ -1,12 +1,13 @@
 /* eslint-env jquery */
 /* global Phaser */
 'use strict';
-$(()=>{
+function preload(){
+  this.load.spritesheet('junko','res/junko walking.png',{frameWidth:32,frameHeight:40});
+}
+function create(){
+  this.add.sprite(400,300,'junko');
 
-  test();
-
-
-});
+}
 function test(){
   var config = {
     type: Phaser.AUTO,
@@ -55,4 +56,31 @@ function test(){
   
     emitter.startFollow(logo);
   }
+}
+var main = function(){
+  /* eslint global main */
+  let game = setup();
+  //test();
+};
+function setup(){
+  //sets what is needed to run
+  let target = $('#target');
+  let config ={
+    type: Phaser.AUTO,
+    parent: target,
+    scale:{
+      width:800,
+      height:600,
+      scale:'SHOW_ALL',
+      orientation: 'LANDSCAPE'
+    },
+    scene:{
+      preload:preload,
+      create:create,
+
+    }
+
+  };
+  let theGame = new Phaser.Game(config);
+  return theGame;
 }

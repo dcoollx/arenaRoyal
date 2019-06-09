@@ -3,3 +3,9 @@
   Arena Royal
 *
 */
+/* eslint-env jquery */
+/* eslint global main() */
+'use strict';
+$(()=>{
+  main();
+});
