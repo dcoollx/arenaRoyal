@@ -5,7 +5,8 @@ function preload(){
   this.load.spritesheet('junko','res/junko walking.png',{frameWidth:32,frameHeight:40});
 }
 function create(){
-  this.add.sprite(400,300,'junko');
+  //this.add.sprite(400,300,'junko');
+  let test = new entity(this,'junko');
 
 }
 function test(){
