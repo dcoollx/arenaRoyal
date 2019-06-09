@@ -10,8 +10,9 @@ class entity{
   constructor(game,sName){
     entityManager.push(this);// add this entity to list
     this.sprite;
-    this.sprite = game.add.sprite(400,300,sName);
-    //this.sprite.setCollideWorldBounds(true);
+    this.sprite = game.physics.add.sprite(400,300,sName);
+    this.sprite.setCollideWorldBounds(true);
+    //this.sprite.body.setGravityY(5);
 
   }
   getEntityIndex(){ return entityManager.indexOf(this);} //return the index of this item in entity manager

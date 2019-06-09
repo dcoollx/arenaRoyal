@@ -1,12 +1,32 @@
 /* eslint-env jquery */
 /* global Phaser */
 'use strict';
+var keys;
 function preload(){
   this.load.spritesheet('junko','res/junko walking.png',{frameWidth:32,frameHeight:40});
+  //todo, change this to be behind scenes
+  this.anims.create({
+    key:'left',
+    frames: this.anims.generateFrameNumbers('junko',{start:0,end:3}),
+    framerate:10,
+    repeat:-1
+  });
+
+  //-end todo
 }
 function create(){
   //this.add.sprite(400,300,'junko');
   let test = new entity(this,'junko');
+  keys = this.input.keyboard.createCursorKeys();
+
+
+}
+function update(){
+  //main game loop
+  
+  if(keys.down.isDown){
+    entityManager[0].sprite.setVelocityX(-500);
+  }
 
 }
 function test(){
@@ -69,6 +89,12 @@ function setup(){
   let config ={
     type: Phaser.AUTO,
     parent: target,
+    physics:{
+      default: 'arcade',
+      arcade:{
+        debug:false
+      }
+    },
     scale:{
       width:800,
       height:600,
@@ -78,6 +104,7 @@ function setup(){
     scene:{
       preload:preload,
       create:create,
+      update:update
 
     }
 
