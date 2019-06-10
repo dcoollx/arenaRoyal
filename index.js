@@ -7,5 +7,5 @@
 /* eslint global main() */
 'use strict';
 $(()=>{
-  main();
+  let game = setup();
 });

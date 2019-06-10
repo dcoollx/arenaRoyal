@@ -6,23 +6,24 @@ var entityManager = [];
 /**
  * @param {object,string}reference to game object, name of sprite  */ 
 
-class entity{
-  constructor(game,sName){
-    entityManager.push(this);// add this entity to list
-    this.sprite;
-    this.sprite = game.physics.add.sprite(400,300,sName);
-    this.sprite.setCollideWorldBounds(true);
-    //this.sprite.body.setGravityY(5);
-
+class entity extends Phaser.Physics.Arcade.Sprite{
+  constructor(scene,x ,y,texture ){
+    super(scene,x,y,texture);
+    this.setTexture(texture);
+    this.setPosition(x,y);
+    entityManager.push(this);
+    //this.setCollideWorldBounds(true);
+  
   }
   getEntityIndex(){ return entityManager.indexOf(this);} //return the index of this item in entity manager
   
 }
 class player extends entity{
-  constructor(game,sName,playerName){
-    super(game,sName);
+  constructor(scene,x,y,sName,playerName){
+    super(scene, x ,y ,sName);
     this.socketId;//for networking
     this.playerName = playerName;
+    //this.keys = scene.input.keyboard.createCursorKeys();
 
   }
 }

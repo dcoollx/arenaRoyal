@@ -1,7 +1,11 @@
 /* eslint-env jquery */
 /* global Phaser */
 'use strict';
+
+
 var keys;
+var player;
+
 function preload(){
   this.load.spritesheet('junko','res/junko walking.png',{frameWidth:32,frameHeight:40});
   //todo, change this to be behind scenes
@@ -16,7 +20,8 @@ function preload(){
 }
 function create(){
   //this.add.sprite(400,300,'junko');
-  let test = new entity(this,'junko');
+  player =new entity(this,400,300,'junko','Player1');
+  this.add.existing(player);
   keys = this.input.keyboard.createCursorKeys();
 
 
@@ -25,7 +30,7 @@ function update(){
   //main game loop
   
   if(keys.down.isDown){
-    entityManager[0].sprite.setVelocityX(-500);
+    game.player.setVelocityX(-500);
   }
 
 }
@@ -78,11 +83,7 @@ function test(){
     emitter.startFollow(logo);
   }
 }
-var main = function(){
-  /* eslint global main */
-  let game = setup();
-  //test();
-};
+
 function setup(){
   //sets what is needed to run
   let target = $('#target');
